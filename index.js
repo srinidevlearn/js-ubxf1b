@@ -132,9 +132,45 @@ appDiv.appendChild(createContainer);
 //   // to remove child from existing node
 //   appDiv.removeChild(document.querySelector('#container'));
 // }, 20 * 1000);
-
+// not working due to stackblitz online editor tool
 window.addEventListener('DOMContentLoaded', () => {
   // console.clear();
-  console.log('input', document.querySelector('input#validationServer01'));
   //.addEventListener('change', (e) => console.log);
 });
+
+validForms('input#validationServer01');
+validForms('input#validationServer02');
+validForms('input#validationServer03');
+validForms('select#validationServer04');
+validForms('input#validationServer05');
+
+function validForms(selector) {
+  const input = document
+    // .querySelector('input#validationServer01')
+    .querySelector(selector);
+
+  if (input) {
+    const feedBack = document.querySelector('' + selector + ' ~ div');
+    input.value = '';
+    input.setAttribute('class', 'form-control');
+    input.addEventListener('blur', (e) => {
+      if (e.target.value.length > 0) {
+        input.classList.add('is-valid');
+      }
+
+      if (e.target.value.length > 0) {
+        input.classList.add('is-invalid');
+      }
+      console.log(e.target.value);
+      if (e.target.value === '') {
+        input.classList.replace('is-valid', 'is-invalid');
+        feedBack.classList.replace('valid-feedback', 'invalid-feedback');
+        feedBack.innerHTML = 'Wrong Input';
+      } else {
+        input.classList.replace('is-invalid', 'is-valid');
+        feedBack.classList.replace('invalid-feedback', 'valid-feedback');
+        feedBack.innerHTML = 'Looks Good';
+      }
+    });
+  }
+}
