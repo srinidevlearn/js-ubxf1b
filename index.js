@@ -163,8 +163,8 @@ function validForms(selector) {
 
   if (input) {
     const feedBack = document.querySelector('' + selector + ' ~ div');
-    const label = document.querySelector('label ~' + selector);
-    console.log('label', label);
+    let temp = selector.split('#')[1];
+    const label = document.querySelector(`[for="${temp}"]`);
 
     input.value = '';
     input.setAttribute('class', 'form-control');
