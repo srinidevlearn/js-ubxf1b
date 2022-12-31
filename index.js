@@ -133,7 +133,7 @@ appDiv.appendChild(createContainer);
 //   appDiv.removeChild(document.querySelector('#container'));
 // }, 20 * 1000);
 
-document.addEventListener('DOMCONTENTLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   // console.clear();
   console.log('input', document.querySelector('input#validationServer01'));
   //.addEventListener('change', (e) => console.log);
