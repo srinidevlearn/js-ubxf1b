@@ -143,6 +143,18 @@ validForms('input#validationServer02');
 validForms('input#validationServer03');
 validForms('select#validationServer04');
 validForms('input#validationServer05');
+/**
+ * input
+ * keyup
+ * keypress
+ * click
+ * mouseover
+ * mousein
+ * mouseout
+ * change
+ * blur
+ * focus
+ */
 
 function validForms(selector) {
   const input = document
@@ -151,11 +163,18 @@ function validForms(selector) {
 
   if (input) {
     const feedBack = document.querySelector('' + selector + ' ~ div');
+    const label = document.querySelector('label ~' + selector);
+    console.log('label', label);
+
     input.value = '';
     input.setAttribute('class', 'form-control');
     input.addEventListener('blur', (e) => {
+      console.log(e.target.value);
       if (e.target.value.length > 0) {
         input.classList.add('is-valid');
+      }
+      if (!e.target.value) {
+        input.classList.add('is-invalid');
       }
 
       if (e.target.value.length > 0) {
